@@ -1,6 +1,7 @@
 <?php
 
 include 'api/gameController.php';
+include 'api/userController.php';
 class frontController{
  
 
@@ -15,7 +16,7 @@ class frontController{
         
         $api = new gameController();
         
-        $api->create($data->name,$data->description,$data->price,$data->total,$data->category);
+        $api->create($data);
 
     }
     static function apiUpdate($data){
@@ -36,6 +37,10 @@ class frontController{
         
         $newUser = new userController();
         $newUser->register($data->name,$data->email,$data->password);
+    }
+    static function login($data){
+        $login = new userController();
+        $login->login($data);
     }
    
     

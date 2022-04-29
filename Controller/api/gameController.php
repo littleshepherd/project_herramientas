@@ -6,7 +6,7 @@ class gameController{
     public function index(){
         $array = array();
         $db = new dataBase();
-        $db =  $db->connect()->query("SELECT * FROM game");
+        $db =  $db->connect()->query("SELECT * FROM games");
 
         
         while ($row = $db->fetch(PDO::FETCH_ASSOC)){
@@ -18,36 +18,39 @@ class gameController{
                 'price' =>$row['price'],
                 'category' =>$row['category'],
                 'total' =>$row['total'],
+                'image' =>$row['image']
             ];
            
             array_push($array,$item);
         }
-        header("content-type: application/json");
+        
         echo json_encode($array);
         
     }
-    public function create($name,$description,$price,$total,$category){
+    public function create($data){
         $db = new dataBase();
-        $exist  = $db->connect()->query("SELECT * FROM game WHERE name = '$name'");
+        $exist  = $db->connect()->query("SELECT * FROM games WHERE name = '$data->name'");
         $exist = $exist->rowCount();
         if($exist){
 
         }else{
             
-            $query = "INSERT INTO game (name, price, total, description, category) VALUES ('$name', '$price', '$total','$description', '$category')";
+            $query = "INSERT INTO games (name, price, total, description, category, image) VALUES ('$data->name', '$data->price', '$data->total', '$data->description', '$data->category', '$data->image')";
             $db->execute($query);
         }
     }
     public function update($data){
         $db = new dataBase();
-        $query = "SELECT id FROM game WHERE id = '$data->id'";
+        $query = "SELECT id FROM games WHERE id = '$data->id'";
         $exist = $db->execute($query);
         if($exist->rowCount()){
-            $queryUpdate = "UPDATE game SET name = '$data->name', 
-            description='$data->description', 
-            price='$data->price', 
-            total='$data->total,
-            category='$data->category'
+            $queryUpdate = "UPDATE games SET 
+            name = '$data->name', 
+            description = '$data->description', 
+            price = '$data->price', 
+            total = '$data->total'  ,
+            category = '$data->category',
+            image = '$data->image'
             WHERE id = '$data->id'";
             $db->execute($queryUpdate);
         }else{

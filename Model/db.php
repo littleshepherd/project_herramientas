@@ -23,18 +23,7 @@ class dataBase{
        return $this->connect()->query($query);
     }
   
-    // public function All(){
-    //     $query =$this->connect()->query("SELECT * FROM game");
-        
-        
-    //     return $query;
-    // }
-    // public function GetGame($name){
-        
-    // }
-    // public function createGame(){
-
-    // }
+   
 
 
 }

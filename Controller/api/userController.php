@@ -19,14 +19,20 @@ class userController{
         }
 
     }
-    public function login($user, $password){
-        $password = md5($password);
+    public function login($data){
+        
+        $password = md5($data->password);
         $db = new dataBase();
-        $query = $db->execute("SELECT * FROM users WHERE email = '$user' AND password = '$password'");
+        $query = $db->execute("SELECT * FROM users WHERE (email = '$data->user' AND password = '$password')");
+       
         if($query->rowCount()){
             $data = $query->fetchAll(PDO::FETCH_ASSOC);
+            
             $_SESSION['status'] = true;
-
+          http_response_code(201);
+            
+        }else{
+            http_response_code(401);
         }
 
     }
