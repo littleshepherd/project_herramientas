@@ -30,7 +30,7 @@ class frontController{
     
         $api = new gameController();
         
-        $api->delete($data->id);
+        $api->destroy($data->id);
     }
     static function register($data){
        

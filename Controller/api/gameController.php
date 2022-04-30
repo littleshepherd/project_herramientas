@@ -57,7 +57,7 @@ class gameController{
             
         }
     }
-    public function delete($id){
+    public function destroy($id){
         $db = new dataBase();
         $query = "SELECT id FROM game WHERE id = '$data->id'";
         $exist = $db->execute($query);

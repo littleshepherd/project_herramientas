@@ -29,9 +29,12 @@ class userController{
             $data = $query->fetchAll(PDO::FETCH_ASSOC);
             
             $_SESSION['status'] = true;
+            $_SESSION['user_id'] = $data['id'];
           http_response_code(201);
             
         }else{
+            $_SESSION['status'] = false;
+
             http_response_code(401);
         }
 

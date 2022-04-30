@@ -2,6 +2,11 @@
 include_once __DIR__ . '/../Controller/frontController.php';
 include_once __DIR__ . '/../Controller/api/userController.php';
 session_start();
+//headers
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Allow: GET, POST, PUT, DELETE");
 
 $uri = explode('/',$_SERVER['REQUEST_URI']);
 $argUri = '/'.$uri[1].'/'.$uri[2];
@@ -25,13 +30,18 @@ $data = getData();
             
               frontController::apiIndex();
         } 
-
-        if($argUri == "/project_herramientas/games" && $method == 'POST'){
-                frontController::apiCreate($data);
-        }
-        if($argUri == "/project_herramientas/games" && $method == 'PUT'){
-                frontController::apiUpdate($data);
-        }
+                if($_SESSION['status']){
+                        if($argUri == "/project_herramientas/games" && $method == 'POST'){
+                                frontController::apiCreate($data);
+                        }
+                        if($argUri == "/project_herramientas/games" && $method == 'PUT'){
+                                frontController::apiUpdate($data);
+                        }
+                        if($argUri == "/project_herramientas/games" && $method == 'DELETE'){
+                                frontController::apiDelete($data);
+                        }
+                }
+       
 
     
    
