@@ -1,10 +1,10 @@
 <?php
 class dataBase{
 
-    private $host ="localhost";
-    private $user ="root";
-    private $password ="";
-    private $dbName ="db_games";
+    private $host ="frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+    private $user ="zfexgrxqnezp1rkt";
+    private $password ="wfmfanmi8c56x23u";
+    private $dbName ="vcj82qm5e580qh8y";
 
  
     public function connect(){

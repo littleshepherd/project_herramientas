@@ -12,7 +12,7 @@ $uri = explode('/',$_SERVER['REQUEST_URI']);
 $argUri = '/'.$uri[1].'/'.$uri[2];
 $method = $_SERVER['REQUEST_METHOD'];
 
-print_r($argUri);
+
  function getData() {
         $body = file_get_contents("php://input");
         $data = json_decode($body);
