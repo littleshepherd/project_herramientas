@@ -2,6 +2,7 @@
 
 include 'api/gameController.php';
 include 'api/userController.php';
+include 'api/clientController.php';
 class frontController{
  
 
@@ -41,6 +42,13 @@ class frontController{
     static function login($data){
         $login = new userController();
         $login->login($data);
+    }
+    static function logout($data){
+
+    }
+    static function contact($data){
+        $client = new clientController();
+        $client->contact($data);
     }
    
     

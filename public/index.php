@@ -26,7 +26,10 @@ $data = getData();
         }
         if($argUri == '/project_herramientas/register'){
                 frontController::register($data);
-        }         
+        }       
+        if($argUri == '/project_herramientas/contact'){
+                frontController::contact($data);
+        }        
         if( $argUri == "/project_herramientas/games" && $_SERVER['REQUEST_METHOD'] == 'GET'){
             
               frontController::apiIndex();
