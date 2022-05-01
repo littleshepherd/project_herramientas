@@ -7,11 +7,12 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Allow: GET, POST, PUT, DELETE");
-
+$_SESSION['status']= false;
 $uri = explode('/',$_SERVER['REQUEST_URI']);
 $argUri = '/'.$uri[1].'/'.$uri[2];
 $method = $_SERVER['REQUEST_METHOD'];
 
+print_r($argc);
  function getData() {
         $body = file_get_contents("php://input");
         $data = json_decode($body);
@@ -30,7 +31,7 @@ $data = getData();
             
               frontController::apiIndex();
         } 
-                if($_SESSION['status']){
+                if($_SESSION['status'] = true){
                         if($argUri == "/project_herramientas/games" && $method == 'POST'){
                                 frontController::apiCreate($data);
                         }
